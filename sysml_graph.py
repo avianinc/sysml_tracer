@@ -1,10 +1,18 @@
 import json
+import os
 import plotly.graph_objects as go
 import networkx as nx
 from plotly.offline import plot
 
-# Load and parse the JSON file
-with open('data/qrc.json', 'r') as json_file:
+# Get the absolute path of the current working directory
+path = os.path.abspath('')
+# Get the directory path of the current file   
+notebook_dir = os.path.dirname(path)
+# Construct the file path relative to the current file
+json_file_path = os.path.join(notebook_dir, 'data/query_results.json')
+
+# Load the JSON data
+with open('data/query_results.json', 'r') as json_file:
     data = json.load(json_file)
 
 # Initialize a directed graph in networkx
@@ -116,4 +124,4 @@ fig = go.Figure(data=[edge_trace, node_trace],
                     yaxis=dict(showgrid=False, zeroline=False, showticklabels=False)))
 
 # Display the interactive graph in a browser
-plot(fig, filename='network.html')
+plot(fig, filename='html_out/sysmlv2_network_graph.html')

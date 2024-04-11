@@ -51,7 +51,7 @@ This tool assists SysML API developers in tracing and visualizing the highly nes
 - **Using the Python Script:** Run the `sysml_graph.py` script. Upon completion, an interactive Plotly graph will be saved to `/html_out/sysmlv2_network_graph.html` and automatically opened in your web browser for review.
 
 - **Below is an example graph**
-<iframe width="900" height="800" frameborder="0" scrolling="no" src="./html_out/sysmlv2_network_graph.html"></iframe>
+![Example Graph](./html_out/sysmlv2_network_graph.html)
 
 - **Using a Jupyter Notebook:** Open `build_sysml_graph.ipynb` in the `/notebooks` folder. This notebook replicates the capability of the `sysml_graph.py` script, presenting the Plotly image within a notebook cell. A link to nbviewer online is provided for an example graph since Plotly network graphs do not render when committed to Git.
 

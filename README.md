@@ -53,6 +53,9 @@ This tool assists SysML API developers in tracing and visualizing the highly nes
 - **Below is an example graph**
 ![SysMLv2 Network Graph](/images/sysmlv2_network_graph.png)
 
+- **See an active plotly graph here**
+https://nbviewer.org/github/avianinc/sysml_tracer/blob/main/notebooks/build_sysml_graph.ipynb
+
 - **Using a Jupyter Notebook:** Open `build_sysml_graph.ipynb` in the `/notebooks` folder. This notebook replicates the capability of the `sysml_graph.py` script, presenting the Plotly image within a notebook cell. A link to nbviewer online is provided for an example graph since Plotly network graphs do not render when committed to Git.
 
 ## Note

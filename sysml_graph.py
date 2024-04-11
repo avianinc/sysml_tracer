@@ -36,7 +36,8 @@ for element in data:
             edge_hover_info[(node_id, target_id)] = f'{key} → {target_id}'
 
 # Use a layout algorithm to position the nodes
-node_id_to_position = nx.spring_layout(G)
+node_id_to_position = nx.spring_layout(G,  k=.15) # easier to read the labels
+#node_id_to_position = nx.spectral_layout(G, scale=.1) # easer to see the arms of the graph
 
 # Initialize edge trace for Plotly
 edge_trace = go.Scatter(
@@ -67,17 +68,41 @@ node_trace = go.Scatter(
     textposition='bottom center',
     marker=dict(
         showscale=False,
-        color='LightSkyBlue',
+        color=[],  # Remove static color assignment here
         size=10,
         line_width=2))
 
-# Add node positions, labels, and hover texts to the node trace
+...
+
+# Initialize node trace for Plotly
+node_trace = go.Scatter(
+    x=[],
+    y=[],
+    text=[],
+    mode='markers+text',
+    hovertext=[],
+    hoverinfo='text',
+    textposition='bottom center',
+    marker=dict(
+        showscale=False,
+        color=[],  # Color will be added later
+        size=10,
+        line_width=2))
+
+# Add node positions, labels, hover texts to the node trace, and define the color based on type
 for node in G.nodes():
     x, y = node_id_to_position[node]
+    node_type = G.nodes[node].get('label', '').split('\n')[0]  # Get the type label
+    node_type_value = node_type.split(': ')[1] if ': ' in node_type else None
+    
+    # Set color based on the type
+    node_color = 'red' if node_type_value in ['OperatorExpression', 'AttributeUsage', 'ReferenceUsage', 'ConstraintUsage'] else 'LightSkyBlue'
+    
     node_trace['x'] += (x,)
     node_trace['y'] += (y,)
     node_trace['text'] += (G.nodes[node]['label'],)
-    node_trace['hovertext'] += (node_info.get(node, ''),)
+    node_trace['hovertext'] += (node_info[node],)  # Fix: access node_info with node as key
+    node_trace['marker']['color'] += (node_color,)  # Adding the color to the node trace
 
 # Create the figure
 fig = go.Figure(data=[edge_trace, node_trace],

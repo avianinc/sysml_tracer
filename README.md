@@ -1,4 +1,3 @@
-```markdown
 # SysML v2 API Tracer
 
 ## Overview
@@ -58,4 +57,3 @@ This tool assists SysML API developers in tracing and visualizing the highly nes
 The purpose of this tool is to simplify the process of tracing the highly nested relationships of a SysMLv2 model for API developers. Limit the size of the NetworkX graph by keeping models simple to ensure efficient processing and visualization.
 
 For further details or support, please refer to the official documentation of each tool and library used within this project.
-```

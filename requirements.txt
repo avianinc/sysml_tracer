@@ -365,3 +365,4 @@ zipp==3.17.0
 zope.interface==5.4.0
 zstandard==0.19.0
 ipywidgets==7.6.5
+nbformat==5.7.0
